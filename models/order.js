@@ -38,6 +38,10 @@ const orderSchema = new mongoose.Schema(
 				required: true,
 			},
 		},
+		phoneNumber: {
+			type: String,
+			required: true,
+		},
 		paymentMethod: {
 			type: String,
 			required: true,
@@ -50,6 +54,7 @@ const orderSchema = new mongoose.Schema(
 			type: Boolean,
 			default: false,
 		},
+		transactionId: String,
 		paidAt: Date,
 		deliveredAt: Date,
 	},

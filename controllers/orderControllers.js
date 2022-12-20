@@ -27,7 +27,7 @@ export const getSingleOrder = async (req, res) => {
 	try {
 		const order = await Order.findById(id).populate("user");
 		if (!order) {
-			throw new Error("Order is not exists😂😂");
+			throw new Error("Order is not exist");
 		}
 		res.json(order);
 	} catch (err) {
@@ -49,7 +49,7 @@ export const getUserAllOrder = async (req, res) => {
 			.sort({ createdAt: -1 })
 			.populate("user");
 		if (orders.length < 1) {
-			throw new Error("there are no orders 😂😂");
+			throw new Error("there are no orders");
 		}
 		res.json(orders);
 	} catch (err) {

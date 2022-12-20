@@ -12,7 +12,7 @@ export const registerUser = asyncHandler(async (req, res) => {
 	const existUser = await User.findOne({ email });
 	if (existUser) {
 		res.status(404);
-		throw new Error("User already exists😂😂");
+		throw new Error("User already exist");
 	}
 	const user = await User.create({
 		name,
@@ -43,7 +43,7 @@ export const authUser = async (req, res) => {
 		const { email, password } = req.body;
 		const user = await User.findOne({ email });
 		if (!user) {
-			throw new Error("User not Found😂😪😥");
+			throw new Error("User not Found");
 		}
 		const match = await user.matchPassword(password);
 		if (user && match) {
@@ -55,7 +55,7 @@ export const authUser = async (req, res) => {
 				token: generateToken(user._id),
 			});
 		} else {
-			throw new Error("Invalid email or password😂🤣");
+			throw new Error("Invalid email or password");
 		}
 	} catch (err) {
 		res.status(403).json({
@@ -74,14 +74,14 @@ export const updateUser = async (req, res) => {
 		const user = await User.findOne({ email: req.user.email });
 
 		if (!user) {
-			throw new Error("User not Found😂😪😥");
+			throw new Error("User not Found");
 		}
 
 		user.name = name || user.name;
 		if (email && email !== user.email) {
 			const isExist = await User.findOne({ email });
 			if (isExist) {
-				throw new Error("Email is already exist😪😪");
+				throw new Error("Email is already exist");
 			}
 		}
 		user.email = email || user.email;

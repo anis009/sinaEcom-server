@@ -72,7 +72,7 @@ export const getProduct = asyncHandler(async (req, res) => {
 	const id = req.params.id;
 	const product = await Product.findById(id);
 	if (!product) {
-		throw new Error("Product no found😂😂");
+		throw new Error("Product not found");
 	}
 	res.json(product);
 });
@@ -113,7 +113,7 @@ export const updateProduct = asyncHandler(async (req, res) => {
 	const updatedProduct = await product.save();
 	if (updatedProduct) {
 		res.json({
-			message: "product updated successfully😂😂😂",
+			message: "product updated successfully",
 		});
 	}
 });
