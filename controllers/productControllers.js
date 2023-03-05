@@ -41,9 +41,9 @@ export const createProduct = asyncHandler(async (req, res) => {
 //@access Public
 
 export const getProducts = asyncHandler(async (req, res) => {
-	const pageNumber = req.query.pageNumber;
+	const pageNumber = req?.query?.pageNumber || 1;
 	const itemLimit = 8;
-	let keyWord = req.query.keyWord;
+	let keyWord = req?.query?.keyWord || "";
 	console.log(keyWord);
 	keyWord = keyWord
 		? {
