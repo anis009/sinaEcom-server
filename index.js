@@ -21,8 +21,17 @@ const app = express();
 if (process.env.NODE_ENV === "development") {
 	app.use(morgan("dev"));
 }
+app.use(function (req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "X-Requested-With");
+	next();
+});
+app.use(
+	cors({
+		origin: "*",
+	})
+);
 
-app.use(cors());
 app.use(express.json());
 app.use("/api/users/", userRouter);
 app.use("/api/products/", productRouter);
