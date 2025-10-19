@@ -19,17 +19,17 @@ connectDB();
 
 const app = express();
 if (process.env.NODE_ENV === "development") {
-	app.use(morgan("dev"));
+  app.use(morgan("dev"));
 }
 app.use(function (req, res, next) {
-	res.header("Access-Control-Allow-Origin", "*");
-	res.header("Access-Control-Allow-Headers", "X-Requested-With");
-	next();
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
 });
 app.use(
-	cors({
-		origin: "*",
-	})
+  cors({
+    origin: "*",
+  })
 );
 
 app.use(express.json());
@@ -44,7 +44,7 @@ const __dirname = path.resolve();
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.get("/", async (req, res) => {
-	res.send("server is running");
+  res.send("server is running");
 });
 
 app.use(notFound);
@@ -56,15 +56,10 @@ const store_id = process.env.STORED_ID;
 const store_passwd = process.env.STORE_PASSWORD;
 const is_live = false;
 
-console.log(store_id);
-console.log(store_passwd);
-
-console.log("sina", PORT);
-
 app.listen(
-	PORT,
-	console.log(
-		`Server is running in ${process.env.NODE_ENV} on port ${PORT} 🔥🔥🔥🚀🚀`
-			.yellow.bold
-	)
+  PORT,
+  console.log(
+    `Server is running in ${process.env.NODE_ENV} on port ${PORT} 🔥🔥🔥🚀🚀`
+      .yellow.bold
+  )
 );
